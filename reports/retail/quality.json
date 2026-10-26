@@ -1,0 +1,32 @@
+{
+  "raw_rows": 541909,
+  "raw_sha256": "43465a06f2ccf7c8b5bd2892bc7defb52f97487934fe93b16ae4c3936424676d",
+  "missing_by_column": {
+    "InvoiceNo": 0,
+    "StockCode": 0,
+    "Description": 1454,
+    "Quantity": 0,
+    "InvoiceDate": 0,
+    "UnitPrice": 0,
+    "CustomerID": 135080,
+    "Country": 0
+  },
+  "exact_duplicate_rows": 5268,
+  "cancelled_rows": 9288,
+  "nonpositive_quantity_rows": 10624,
+  "nonpositive_price_rows": 2517,
+  "eligible_gross_sales_rows": 475216,
+  "selected_products": {
+    "20725": "LUNCH BAG RED RETROSPOT",
+    "22423": "REGENCY CAKESTAND 3 TIER",
+    "47566": "PARTY BUNTING",
+    "85099B": "JUMBO BAG RED RETROSPOT",
+    "85123A": "WHITE HANGING HEART T-LIGHT HOLDER"
+  },
+  "sku_selection": "top five by distinct training invoices through 2011-06-30",
+  "calendar_rows_without_sale_records": 377,
+  "zero_policy": "zero recorded sales in this file; unknown latent demand/stockout/closure, not certified true zero demand",
+  "last_partial_date_excluded": "2011-12-09",
+  "customer_ids_retained_in_derived_outputs": false,
+  "stock_or_supplier_fields_available": false
+}

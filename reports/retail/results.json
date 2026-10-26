@@ -1,0 +1,158 @@
+{
+  "run_date": "2026-10-26",
+  "winner_selected_on_validation_MAE": "random_forest_leaf_10",
+  "quality": {
+    "raw_rows": 541909,
+    "raw_sha256": "43465a06f2ccf7c8b5bd2892bc7defb52f97487934fe93b16ae4c3936424676d",
+    "missing_by_column": {
+      "InvoiceNo": 0,
+      "StockCode": 0,
+      "Description": 1454,
+      "Quantity": 0,
+      "InvoiceDate": 0,
+      "UnitPrice": 0,
+      "CustomerID": 135080,
+      "Country": 0
+    },
+    "exact_duplicate_rows": 5268,
+    "cancelled_rows": 9288,
+    "nonpositive_quantity_rows": 10624,
+    "nonpositive_price_rows": 2517,
+    "eligible_gross_sales_rows": 475216,
+    "selected_products": {
+      "20725": "LUNCH BAG RED RETROSPOT",
+      "22423": "REGENCY CAKESTAND 3 TIER",
+      "47566": "PARTY BUNTING",
+      "85099B": "JUMBO BAG RED RETROSPOT",
+      "85123A": "WHITE HANGING HEART T-LIGHT HOLDER"
+    },
+    "sku_selection": "top five by distinct training invoices through 2011-06-30",
+    "calendar_rows_without_sale_records": 377,
+    "zero_policy": "zero recorded sales in this file; unknown latent demand/stockout/closure, not certified true zero demand",
+    "last_partial_date_excluded": "2011-12-09",
+    "customer_ids_retained_in_derived_outputs": false,
+    "stock_or_supplier_fields_available": false
+  },
+  "splits": {
+    "train": {
+      "rows": 920,
+      "start": "2010-12-29",
+      "end": "2011-06-30"
+    },
+    "validation": {
+      "rows": 310,
+      "start": "2011-07-01",
+      "end": "2011-08-31"
+    },
+    "test": {
+      "rows": 495,
+      "start": "2011-09-01",
+      "end": "2011-12-08"
+    }
+  },
+  "features": [
+    "lag_1",
+    "lag_7",
+    "lag_14",
+    "mean_7",
+    "mean_28",
+    "std_28",
+    "weekday",
+    "month",
+    "day_of_year"
+  ],
+  "horizon": "rolling one day ahead; actual previous-day observations available",
+  "inventory_predictions": "not produced: no observed inventory/lead-time fields",
+  "comparison": [
+    {
+      "split": "validation",
+      "model": "naive",
+      "rows": 310,
+      "MAE": 76.48387096774194,
+      "RMSE": 140.65443813737957,
+      "WAPE_percent": 111.30410290113603,
+      "bias_forecast_minus_actual": 0.6193548387096774
+    },
+    {
+      "split": "validation",
+      "model": "weekly_naive",
+      "rows": 310,
+      "MAE": 69.57741935483871,
+      "RMSE": 132.04878130888332,
+      "WAPE_percent": 101.25340343629705,
+      "bias_forecast_minus_actual": 1.2161290322580645
+    },
+    {
+      "split": "validation",
+      "model": "mean_7",
+      "rows": 310,
+      "MAE": 65.58064516129032,
+      "RMSE": 110.28255170843318,
+      "WAPE_percent": 95.4370481644916,
+      "bias_forecast_minus_actual": 1.3999999999999997
+    },
+    {
+      "split": "validation",
+      "model": "random_forest_leaf_3",
+      "rows": 310,
+      "MAE": 54.747414956067026,
+      "RMSE": 101.59541555300507,
+      "WAPE_percent": 79.67185539564726,
+      "bias_forecast_minus_actual": -0.6613343630049866
+    },
+    {
+      "split": "validation",
+      "model": "random_forest_leaf_10",
+      "rows": 310,
+      "MAE": 53.658650961817955,
+      "RMSE": 99.92043512330854,
+      "WAPE_percent": 78.08741807418818,
+      "bias_forecast_minus_actual": -1.8751210371491567
+    },
+    {
+      "split": "test",
+      "model": "naive",
+      "rows": 495,
+      "MAE": 69.15555555555555,
+      "RMSE": 151.2336475841807,
+      "WAPE_percent": 102.555498966416,
+      "bias_forecast_minus_actual": -0.23030303030303031
+    },
+    {
+      "split": "test",
+      "model": "weekly_naive",
+      "rows": 495,
+      "MAE": 64.51717171717172,
+      "RMSE": 157.53728434753455,
+      "WAPE_percent": 95.67692261601606,
+      "bias_forecast_minus_actual": -2.4202020202020202
+    },
+    {
+      "split": "test",
+      "model": "mean_7",
+      "rows": 495,
+      "MAE": 59.78037518037519,
+      "RMSE": 127.83014539995895,
+      "WAPE_percent": 88.65240335026728,
+      "bias_forecast_minus_actual": -1.430591630591631
+    },
+    {
+      "split": "test",
+      "model": "random_forest_leaf_3",
+      "rows": 495,
+      "MAE": 47.9649529472796,
+      "RMSE": 118.54778364210989,
+      "WAPE_percent": 71.13050633303395,
+      "bias_forecast_minus_actual": -6.557398592591255
+    },
+    {
+      "split": "test",
+      "model": "random_forest_leaf_10",
+      "rows": 495,
+      "MAE": 46.28635028302781,
+      "RMSE": 116.74743831016127,
+      "WAPE_percent": 68.64119173761576,
+      "bias_forecast_minus_actual": -8.300403105776036
+    }
+  ]
+}

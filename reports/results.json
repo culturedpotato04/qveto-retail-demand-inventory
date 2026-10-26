@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-18",
+  "quality": {
+    "rows": 731,
+    "columns": [
+      "instant",
+      "dteday",
+      "season",
+      "yr",
+      "mnth",
+      "holiday",
+      "weekday",
+      "workingday",
+      "weathersit",
+      "temp",
+      "atemp",
+      "hum",
+      "windspeed",
+      "casual",
+      "registered",
+      "cnt"
+    ],
+    "date_start": "2011-01-01",
+    "date_end": "2012-12-31",
+    "duplicate_dates": 0,
+    "duplicate_rows": 0,
+    "missing_dates": [],
+    "missing_values": {
+      "instant": 0,
+      "dteday": 0,
+      "season": 0,
+      "yr": 0,
+      "mnth": 0,
+      "holiday": 0,
+      "weekday": 0,
+      "workingday": 0,
+      "weathersit": 0,
+      "temp": 0,
+      "atemp": 0,
+      "hum": 0,
+      "windspeed": 0,
+      "casual": 0,
+      "registered": 0,
+      "cnt": 0
+    },
+    "negative_targets": 0,
+    "noninteger_targets": 0,
+    "target_component_mismatches": 0
+  },
+  "warmup_rows": 28,
+  "splits": {
+    "train": {
+      "rows": 421,
+      "start": "2011-01-29",
+      "end": "2012-03-24"
+    },
+    "validation": {
+      "rows": 141,
+      "start": "2012-03-25",
+      "end": "2012-08-12"
+    },
+    "test": {
+      "rows": 141,
+      "start": "2012-08-13",
+      "end": "2012-12-31"
+    }
+  },
+  "horizon": "rolling one day ahead",
+  "selected_by_validation_MAE": "naive",
+  "metrics": [
+    {
+      "split": "validation",
+      "baseline": "naive",
+      "n": 141,
+      "MAE": 847.2056737588653,
+      "RMSE": 1218.7270827087004,
+      "WAPE_percent": 13.306213561519629,
+      "bias_forecast_minus_actual": -22.49645390070922
+    },
+    {
+      "split": "validation",
+      "baseline": "seasonal_naive_7",
+      "n": 141,
+      "MAE": 1063.3191489361702,
+      "RMSE": 1430.8651105324384,
+      "WAPE_percent": 16.700492121379543,
+      "bias_forecast_minus_actual": -33.773049645390074
+    },
+    {
+      "split": "test",
+      "baseline": "naive",
+      "n": 141,
+      "MAE": 894.3049645390071,
+      "RMSE": 1301.789414940475,
+      "WAPE_percent": 15.261269220761145,
+      "bias_forecast_minus_actual": 27.05673758865248
+    },
+    {
+      "split": "test",
+      "baseline": "seasonal_naive_7",
+      "n": 141,
+      "MAE": 1223.4326241134752,
+      "RMSE": 1790.026835251915,
+      "WAPE_percent": 20.877816170552673,
+      "bias_forecast_minus_actual": 249.68794326241135
+    }
+  ],
+  "inventory_inputs_available": false,
+  "team_confirmation": "pending",
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "3.0.1",
+    "matplotlib": "3.11.2"
+  }
+}
