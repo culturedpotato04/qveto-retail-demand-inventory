@@ -14,6 +14,8 @@ python -m venv .venv
 & '.\.venv\Scripts\python.exe' -m unittest discover -s tests -v
 & '.\.venv\Scripts\python.exe' src/predict_retail.py
 & '.\.venv\Scripts\python.exe' src/report_retail.py
+& '.\.venv\Scripts\python.exe' src/plan_inventory.py
+& '.\.venv\Scripts\python.exe' src/build_review.py
 ```
 
 The downloaded workbook is about 24 MB and raw data/dependencies need additional disk space. Existing raw files are preserved by the downloader. Internet is needed for the first source/dependency download, then the pipeline runs locally. Do not load untrusted joblib/pickle model files.
@@ -29,16 +31,19 @@ The downloaded workbook is about 24 MB and raw data/dependencies need additional
 - models/retail-forecast-latest.joblib (latest historical refit)
 - data/processed/retail-daily.csv and retail-features.csv
 - tests/test_retail.py and tests/test_pipeline.py
+- [Portable product-filter review page](reports/retail/review.html)
+- [Inventory reference, formulas and integration contract](INVENTORY-INTEGRATION.md)
+- config/inventory-demo.json and reports/retail/inventory-scenario.csv
 
 ## What Pranav's implementation does
 
-Audits the actual workbook, constructs five daily product series selected from training invoices only, builds past-only features, compares three baselines with two Random Forest configurations on fixed time windows, selects the winner on validation MAE, evaluates the reserved test, saves models and exposes a one-day prediction CLI for the dashboard owner. All nine current tests pass. CLI output matches saved forecasts; raw workbook hash is unchanged.
+Audits the actual workbook, constructs five daily product series selected from training invoices only, builds past-only features, compares three baselines with two Random Forest configurations on fixed time windows, selects the winner on validation MAE, evaluates the reserved test, saves models and exposes a one-day prediction CLI for the dashboard owner. All 14 current tests pass. CLI output matches saved forecasts; raw workbook hash is unchanged. A separate assumed-input inventory CLI and read-only HTML review connect the module outputs without retraining or repeating one-day predictions across a lead-time horizon.
 
 ## Honest limits
 
 The current retail model still has substantial test error: the validation-selected model's test WAPE is 68.64%, not an accuracy score. The source is historical UK online retail, not the team's live business data. No stock, supplier lead-time or stockout fields exist. Missing-date sales are labeled zero recorded sales, not known zero latent demand. All inventory demo inputs must be explicit assumptions, and real replenishment outcomes cannot be claimed without a backtest and actual inputs.
 
-The generated next-day prediction is for 9 December 2011 from archived history, not a 2026 business forecast. Final dashboard, inventory policy integration, report/slides, team acceptance of assignments, shared GitHub remote and official submission remain team deliverables. Do not tune against the already inspected final test window.
+The generated next-day prediction is for 9 December 2011 from archived history, not a 2026 business forecast. Inventory policy review/extension, final Streamlit dashboard, report/slides, team acceptance of assignments, shared GitHub remote and official submission remain team deliverables. The lead's HTML review is a working integration reference. Do not tune against the already inspected final test window.
 
 ## Sources
 

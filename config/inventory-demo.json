@@ -1,0 +1,18 @@
+{
+  "scenario_only": true,
+  "assumption_note": "Invented demonstration stock and supplier inputs. None are observed in UCI Online Retail. Replace only with verified inputs for real use.",
+  "as_of": "2011-12-08",
+  "lookback_days": 28,
+  "lead_days": 3,
+  "z_score": 1.645,
+  "coverage_days": 7,
+  "pack_size": 12,
+  "minimum_order": 24,
+  "products": [
+    {"product_id": "20725", "stock": 0, "on_order": 0, "backorders": 0},
+    {"product_id": "22423", "stock": 500, "on_order": 0, "backorders": 0},
+    {"product_id": "47566", "stock": 80, "on_order": 24, "backorders": 0},
+    {"product_id": "85099B", "stock": 250, "on_order": 120, "backorders": 24},
+    {"product_id": "85123A", "stock": 1500, "on_order": 0, "backorders": 0}
+  ]
+}
