@@ -1,5 +1,32 @@
 # Qveto Group 4 - Demand Forecasting & Inventory Optimization
 
+## Final release - 30 October 2026
+
+This section supersedes the dated starter status below. Completed by Shree Pranav G with AI assistance: forecasting pipeline, inventory policy, four-view Streamlit dashboard, validated FastAPI service, executed retail EDA notebook, failure analysis, final analytical report and editable eight-slide presentation. **17 tests passed on 30 October**, including UI and API flows. No unreceived teammate work or company acceptance is claimed.
+
+After installing requirements and generating the retail pipeline outputs using the commands below:
+
+```powershell
+& '.\.venv\Scripts\python.exe' src/analyze_retail.py
+& '.\.venv\Scripts\python.exe' -m streamlit run src/app.py --browser.gatherUsageStats false
+# Optional API, in another terminal:
+& '.\.venv\Scripts\python.exe' -m uvicorn api:app --app-dir src --host 127.0.0.1 --port 8000
+```
+
+Open the displayed localhost URL. Select a product, filter evaluation dates, generate the archived forecast, and edit stock/lead time/pack assumptions. Download filtered predictions or scenario JSON. API docs: http://127.0.0.1:8000/docs . Routes: GET /health, /products, /forecast/{product_id}?horizon=1; POST /inventory/scenario. Unknown products return 404; invalid horizons, negative/nonfinite numbers, fractional packs and extra scenario fields are rejected. API forecasts serve frozen archived inference; the dashboard runs the trusted local model. These are local research applications without production authentication or persistence.
+
+- [Final report](reports/final/Final-Report.pdf)
+- [Editable presentation](reports/final/Project-Presentation.pptx)
+- [Executed retail notebook](notebooks/02-retail-analysis.ipynb)
+- [Data quality, failure cases, inventory limits and recommendations](reports/retail/ANALYSIS.md)
+- Product/time error tables: reports/retail/per-product-errors.csv, test-month-errors.csv, largest-errors.csv
+
+Test MAE 46.29 units, RMSE 116.75, WAPE 68.64% error, bias -8.30. MAE is 22.57% lower than the strongest baseline (seven-day mean, 59.78). Rolling one-day evaluation uses actual preceding-day observations; it does not measure fixed-origin multi-day forecasts. No tuning on the inspected test window. The all-history deployment fit is distinct from the held-out evaluation fit. No stockout reduction, savings or service-level guarantee is established. See the report for operational data and new untouched-period validation still needed.
+
+Raw data are downloaded/rebuilt using the commands below; processed retail CSVs are included in the release ZIP. Historical commit requirements cannot be recreated by this release. Repository upload, official sheet entry and company acceptance remain distinct states, with receipts outside the code repository.
+
+## Dated starter notes - 26 October (superseded by final release above)
+
 Main implementation: **real retail product-level forecasting**, started by Pranav as lead on 26 October 2026 after Gourav confirmed Project 1. Working completion date is **6 November**, based on Gourav's understanding; exact official cutoff/review slot remains unverified. Internal freeze: 5 November.
 
 ## Run the lead contribution
